@@ -3,7 +3,8 @@ import Router from "vue-router";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Algelin from "./pages/algelin/Algelin";
+import Materia from "./pages/Materia";
+import Topico from "./pages/Topico";
 
 import firebase from "./services/firebaseConnection";
 
@@ -20,12 +21,23 @@ const router = new Router({
       },
     },
     {
-      path: "/algelin/:materia",
-      component: Algelin,
+      path: "/topico/:id",
+      component: Topico,
       meta: {
         requiresAuth: true,
       },
+      props: true,
     },
+    {
+      path: "/materia/:currentMateria",
+      component: Materia,
+      meta: {
+        requiresAuth: true,
+      },
+
+      props: true,
+    },
+
     {
       path: "/login",
       component: Login,
@@ -38,10 +50,8 @@ router.beforeEach((to, from, next) => {
   //Verificando se alguma rota tem esse requiresAuth.
 
   if (requiresAuth && !firebase.auth().currentUser) {
-    console.log("kkk");
     next("/login");
   } else {
-    console.log("bbb");
     next();
   }
 });
