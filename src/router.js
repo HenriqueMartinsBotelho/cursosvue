@@ -21,7 +21,7 @@ const router = new Router({
       },
     },
     {
-      path: "/topico/:id",
+      path: "/topico/:currentText",
       component: Topico,
       meta: {
         requiresAuth: true,

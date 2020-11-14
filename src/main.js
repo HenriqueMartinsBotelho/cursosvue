@@ -4,8 +4,10 @@ import router from "./router";
 import firebase from "./services/firebaseConnection";
 import vuetify from "./plugins/vuetify";
 import "material-design-icons-iconfont/dist/material-design-icons.css";
+import VueCodeHighlight from "vue-code-highlight";
 
 Vue.config.productionTip = false;
+Vue.use(VueCodeHighlight);
 
 let app;
 firebase.auth().onAuthStateChanged(() => {
